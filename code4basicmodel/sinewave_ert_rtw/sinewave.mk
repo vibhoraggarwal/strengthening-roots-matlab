@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'sinewave'. 
 ## 
 ## Makefile     : sinewave.mk
-## Generated on : Fri Jun 28 12:42:16 2019
+## Generated on : Wed Jul 10 17:12:47 2019
 ## MATLAB Coder version: 4.2 (R2019a)
 ## 
 ## Build Info:

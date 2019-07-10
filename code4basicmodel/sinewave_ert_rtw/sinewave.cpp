@@ -9,10 +9,10 @@
 //
 // Model version                  : 1.9
 // Simulink Coder version         : 9.1 (R2019a) 23-Nov-2018
-// C/C++ source code generated on : Fri Jun 28 12:45:27 2019
+// C/C++ source code generated on : Wed Jul 10 17:12:44 2019
 //
 // Target selection: ert.tlc
-// Embedded hardware selection: Intel->x86-64 (Linux 64)
+// Embedded hardware selection: ARM Compatible->ARM 7
 // Code generation objectives:
 //    1. Execution efficiency
 //    2. RAM efficiency
@@ -100,26 +100,6 @@ void sinewaveModelClass::step()
   // SignalGenerator: '<Root>/Signal Generator'
   rtDW.SignalGenerator = std::sin((&rtM)->Timing.t[0]);
 
-  // Scope: '<Root>/Scope'
-  {
-    StructLogVar *svar = (StructLogVar *)rtDW.Scope_PWORK.LoggedData;
-    LogVar *var = svar->signals.values;
-
-    // time
-    {
-      double locTime = (((&rtM)->Timing.clockTick1) * 0.2);
-      ;
-      rt_UpdateLogVar((LogVar *)svar->time, &locTime, 0);
-    }
-
-    // signals
-    {
-      real_T up0[1];
-      up0[0] = rtDW.SignalGenerator;
-      rt_UpdateLogVar((LogVar *)var, up0, 0);
-    }
-  }
-
   // Matfile logging
   rt_UpdateTXYLogVars((&rtM)->rtwLogInfo, ((&rtM)->Timing.t));
 
@@ -201,75 +181,6 @@ void sinewaveModelClass::initialize()
   // Matfile logging
   rt_StartDataLoggingWithStartTime((&rtM)->rtwLogInfo, 0.0, rtmGetTFinal((&rtM)),
     (&rtM)->Timing.stepSize0, (&rtmGetErrorStatus((&rtM))));
-
-  // Start for Scope: '<Root>/Scope'
-  {
-    RTWLogSignalInfo rt_ScopeSignalInfo;
-    static int_T rt_ScopeSignalWidths[] = { 1 };
-
-    static int_T rt_ScopeSignalNumDimensions[] = { 1 };
-
-    static int_T rt_ScopeSignalDimensions[] = { 1 };
-
-    static void *rt_ScopeCurrSigDims[] = { (NULL) };
-
-    static int_T rt_ScopeCurrSigDimsSize[] = { 4 };
-
-    static const char_T *rt_ScopeSignalLabels[] = { "" };
-
-    static char_T rt_ScopeSignalTitles[] = "";
-    static int_T rt_ScopeSignalTitleLengths[] = { 0 };
-
-    static boolean_T rt_ScopeSignalIsVarDims[] = { 0 };
-
-    static int_T rt_ScopeSignalPlotStyles[] = { 0 };
-
-    BuiltInDTypeId dTypes[1] = { SS_DOUBLE };
-
-    static char_T rt_ScopeBlockName[] = "sinewave/Scope";
-    static int_T rt_ScopeFrameData[] = { 0 };
-
-    static RTWPreprocessingFcnPtr rt_ScopeSignalLoggingPreprocessingFcnPtrs[] =
-      {
-      (NULL)
-    };
-
-    rt_ScopeSignalInfo.numSignals = 1;
-    rt_ScopeSignalInfo.numCols = rt_ScopeSignalWidths;
-    rt_ScopeSignalInfo.numDims = rt_ScopeSignalNumDimensions;
-    rt_ScopeSignalInfo.dims = rt_ScopeSignalDimensions;
-    rt_ScopeSignalInfo.isVarDims = rt_ScopeSignalIsVarDims;
-    rt_ScopeSignalInfo.currSigDims = rt_ScopeCurrSigDims;
-    rt_ScopeSignalInfo.currSigDimsSize = rt_ScopeCurrSigDimsSize;
-    rt_ScopeSignalInfo.dataTypes = dTypes;
-    rt_ScopeSignalInfo.complexSignals = (NULL);
-    rt_ScopeSignalInfo.frameData = rt_ScopeFrameData;
-    rt_ScopeSignalInfo.preprocessingPtrs =
-      rt_ScopeSignalLoggingPreprocessingFcnPtrs;
-    rt_ScopeSignalInfo.labels.cptr = rt_ScopeSignalLabels;
-    rt_ScopeSignalInfo.titles = rt_ScopeSignalTitles;
-    rt_ScopeSignalInfo.titleLengths = rt_ScopeSignalTitleLengths;
-    rt_ScopeSignalInfo.plotStyles = rt_ScopeSignalPlotStyles;
-    rt_ScopeSignalInfo.blockNames.cptr = (NULL);
-    rt_ScopeSignalInfo.stateNames.cptr = (NULL);
-    rt_ScopeSignalInfo.crossMdlRef = (NULL);
-    rt_ScopeSignalInfo.dataTypeConvert = (NULL);
-    rtDW.Scope_PWORK.LoggedData = rt_CreateStructLogVar(
-      (&rtM)->rtwLogInfo,
-      0.0,
-      rtmGetTFinal((&rtM)),
-      (&rtM)->Timing.stepSize0,
-      (&rtmGetErrorStatus((&rtM))),
-      "ScopeData",
-      1,
-      0,
-      1,
-      0.2,
-      &rt_ScopeSignalInfo,
-      rt_ScopeBlockName);
-    if (rtDW.Scope_PWORK.LoggedData == (NULL))
-      return;
-  }
 }
 
 // Constructor
