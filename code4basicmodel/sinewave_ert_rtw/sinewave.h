@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sinewave'.
 //
-// Model version                  : 1.7
+// Model version                  : 1.9
 // Simulink Coder version         : 9.1 (R2019a) 23-Nov-2018
-// C/C++ source code generated on : Mon Jun 24 17:48:30 2019
+// C/C++ source code generated on : Fri Jun 28 12:45:27 2019
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -20,15 +20,26 @@
 //
 #ifndef RTW_HEADER_sinewave_h_
 #define RTW_HEADER_sinewave_h_
+#include <stddef.h>
+#include <stddef.h>
 #include <cmath>
+#include <float.h>
 #ifndef sinewave_COMMON_INCLUDES_
 # define sinewave_COMMON_INCLUDES_
 #include "rtwtypes.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
+#include "rt_logging.h"
 #endif                                 // sinewave_COMMON_INCLUDES_
 
+// Shared type includes
+#include "multiword_types.h"
+
 // Macros for accessing real-time model data structure
+#ifndef rtmGetFinalTime
+# define rtmGetFinalTime(rtm)          ((rtm)->Timing.tFinal)
+#endif
+
 #ifndef rtmGetErrorStatus
 # define rtmGetErrorStatus(rtm)        ((rtm)->errorStatus)
 #endif
@@ -37,8 +48,24 @@
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
 #endif
 
+#ifndef rtmGetStopRequested
+# define rtmGetStopRequested(rtm)      ((rtm)->Timing.stopRequestedFlag)
+#endif
+
+#ifndef rtmSetStopRequested
+# define rtmSetStopRequested(rtm, val) ((rtm)->Timing.stopRequestedFlag = (val))
+#endif
+
+#ifndef rtmGetStopRequestedPtr
+# define rtmGetStopRequestedPtr(rtm)   (&((rtm)->Timing.stopRequestedFlag))
+#endif
+
 #ifndef rtmGetT
 # define rtmGetT(rtm)                  (rtmGetTPtr((rtm))[0])
+#endif
+
+#ifndef rtmGetTFinal
+# define rtmGetTFinal(rtm)             ((rtm)->Timing.tFinal)
 #endif
 
 #ifndef rtmGetTPtr
@@ -58,7 +85,8 @@ typedef struct {
 
 // Real-time Model Data Structure
 struct tag_RTM {
-  const char_T * volatile errorStatus;
+  const char_T *errorStatus;
+  RTWLogInfo *rtwLogInfo;
   RTWSolverInfo solverInfo;
 
   //
@@ -70,7 +98,9 @@ struct tag_RTM {
     uint32_T clockTick0;
     time_T stepSize0;
     uint32_T clockTick1;
+    time_T tFinal;
     SimTimeStep simTimeStep;
+    boolean_T stopRequestedFlag;
     time_T *t;
     time_T tArray[2];
   } Timing;

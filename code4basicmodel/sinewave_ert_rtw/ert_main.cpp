@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sinewave'.
 //
-// Model version                  : 1.7
+// Model version                  : 1.9
 // Simulink Coder version         : 9.1 (R2019a) 23-Nov-2018
-// C/C++ source code generated on : Mon Jun 24 17:48:30 2019
+// C/C++ source code generated on : Fri Jun 28 12:45:27 2019
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -22,6 +22,18 @@
 #include <stdio.h>                // This ert_main.c example uses printf/fflush
 #include "sinewave.h"                  // Model's header file
 #include "rtwtypes.h"
+#include "builtin_typeid_types.h"
+#include "multiword_types.h"
+#include "rt_logging.h"
+#define QUOTE1(name)                   #name
+#define QUOTE(name)                    QUOTE1(name)              // need to expand name 
+#ifndef SAVEFILE
+# define MATFILE2(file)                #file ".mat"
+# define MATFILE1(file)                MATFILE2(file)
+# define MATFILE                       MATFILE1(MODEL)
+#else
+# define MATFILE                       QUOTE(SAVEFILE)
+#endif
 
 static sinewaveModelClass rtObj;       // Instance of model class
 
@@ -83,19 +95,16 @@ int_T main(int_T argc, const char *argv[])
   // Initialize model
   rtObj.initialize();
 
-  // Attach rt_OneStep to a timer or interrupt service routine with
-  //  period 0.2 seconds (the model's base sample time) here.  The
-  //  call syntax for rt_OneStep is
-  //
-  //   rt_OneStep();
+  // The MAT-file logging option selected; therefore, simulating
+  //  the model step behavior (in non real-time).  Running this
+  //  code produces results that can be loaded into MATLAB.
 
-  printf("Warning: The simulation will run forever. "
-         "Generated ERT main won't simulate model step behavior. "
-         "To change this behavior select the 'MAT-file logging' option.\n");
-  fflush((NULL));
   while (rtmGetErrorStatus(rtObj.getRTM()) == (NULL)) {
-    //  Perform other application tasks here
+    rt_OneStep();
   }
+
+  // Matfile logging
+  rt_StopDataLogging(MATFILE, rtObj.getRTM()->rtwLogInfo);
 
   // Disable rt_OneStep() here
   return 0;

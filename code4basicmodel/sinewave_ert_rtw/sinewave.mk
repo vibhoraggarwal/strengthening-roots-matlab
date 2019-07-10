@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'sinewave'. 
 ## 
 ## Makefile     : sinewave.mk
-## Generated on : Mon Jun 24 17:47:31 2019
+## Generated on : Fri Jun 28 12:42:16 2019
 ## MATLAB Coder version: 4.2 (R2019a)
 ## 
 ## Build Info:
@@ -178,7 +178,7 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=0 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=1 -DINTEGER_CODE=0 -DMT=0
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=0 -DONESTEPFCN=1 -DMAT_FILE=1 -DMULTI_INSTANCE_CODE=1 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
 DEFINES_OPTS = -DTID01EQ=1
 DEFINES_STANDARD = -DMODEL=sinewave -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DUNIX
@@ -189,7 +189,7 @@ DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_STAN
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/sinewave_ert_rtw/sinewave.cpp
+SRCS = $(MATLAB_ROOT)/rtw/c/src/rt_logging.c $(START_DIR)/sinewave_ert_rtw/sinewave.cpp
 
 MAIN_SRC = $(START_DIR)/sinewave_ert_rtw/ert_main.cpp
 
@@ -199,7 +199,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = sinewave.o
+OBJS = rt_logging.o sinewave.o
 
 MAIN_OBJ = ert_main.o
 
