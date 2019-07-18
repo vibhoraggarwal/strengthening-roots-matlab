@@ -1,0 +1,18 @@
+This file is the manifest for the generated code from model 'sinewave'.
+/usr/local/MATLAB/R2019a/rtw/c/src/rt_logging.c
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/ert_main.cpp
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/sinewave.cpp
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/builtin_typeid_types.h
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/multiword_types.h
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/rtwtypes.h
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/sinewave.h
+/usr/local/MATLAB/R2019a/rtw/c/src/rt_logging.h
+/usr/local/MATLAB/R2019a/rtw/c/src/rt_mxclassid.h
+/usr/local/MATLAB/R2019a/simulink/include/rtw_matlogging.h
+/usr/local/MATLAB/R2019a/simulink/include/sl_types_def.h
+/usr/local/MATLAB/R2019a/simulink/include/rtw_continuous.h
+/usr/local/MATLAB/R2019a/simulink/include/rtw_solver.h
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/defines.txt
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/../sinewave
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/html
+/home/vibhor/git/StrengtheningRoots_MATLAB/code4basicmodel/sinewave_ert_rtw/sinewave_manifest.txt
