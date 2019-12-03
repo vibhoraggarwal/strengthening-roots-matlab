@@ -1,3 +1,3 @@
-a=(datevec(now));
+a=clock;
 
-curseconds=a(6);
+curseconds=a(6)-round(a(6))
